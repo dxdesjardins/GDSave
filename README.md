@@ -113,7 +113,7 @@ public partial class SavePosition2D : Node, ISaveable
 </div>
 
 
-<span style="font-size: 1.4em;"><strong>Implementing Saving in an Inventory Node:</strong></span>
+### Implementing Saving in an Inventory Node:
 
 <div style="margin-left: 1em;">
 
@@ -172,7 +172,7 @@ public partial class Inventory : Node, ISaveable
 ```
 </div>
 
-<span style="font-size: 1.4em;"><strong>Implementing Saving in a Resource</strong></span>
+### Implementing Saving in a Resource:
 
 <div style="margin-left: 1em;">
 
