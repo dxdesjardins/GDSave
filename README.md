@@ -8,7 +8,7 @@ Feature rich save system for the Godot Game Engine.
 
 ## Overview
 
-Save System that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
+Save system that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
 
 ## Features
 
