@@ -49,7 +49,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 3. `SaveState` and `SavePosition2D` are included in this repository. `SaveState` will save if its parent is inside the SceneTree. `SavePosition2D` will save its parent's 2D position.
 
 <div style="margin-left: 1em;">
-<img src="Docs/BranchScene.png" width="400px"><br>
+<img src="Docs/BranchScene.png" width="300px"><br>
 </div>
 
 ### Setup of a Stage with Saveable Nodes
@@ -57,13 +57,13 @@ Save System that supports automatic or manual saving and loading of instanced an
 In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. If the `Saver` is a parent of the saveables, it will load them after they call `_Ready`.
 
 <div style="margin-left: 1em;">
-<img src="Docs/StageSetupParent.png" width="400px"><br>
+<img src="Docs/StageSetupParent.png" width="300px"><br>
 </div>
 
 In the below setup, `TimeSystem` is loaded after `_Ready` is called. `WeatherSystem` is loaded before `_Ready` is called.
 
 <div style="margin-left: 1em;">
-    <img src="Docs/StageSetupMid.png" width="400px"><br>
+    <img src="Docs/StageSetupMid.png" width="300px"><br>
 </div>
 
 ### Implementation of a Node that will save and load its parent's position
