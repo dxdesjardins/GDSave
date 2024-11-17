@@ -52,6 +52,42 @@ Save System that supports automatic or manual saving and loading of instanced an
 <img src="Docs/BranchScene.png" width="300px"><br>
 </div>
 
+### Setup of a Stage with Saveable Nodes
+
+In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. If the `Saver` is a parent of the saveables, it will load them after they call `_Ready`.
+
+<div style="margin-left: 1em;">
+<img src="Docs/StageSetupParent.png" width="300px"><br>
+</div>
+
+In the below setup, `TimeSystem` is loaded after `_Ready` is called. `WeatherSystem` is loaded before `_Ready` is called.
+
+<div style="margin-left: 1em;">
+    <img src="Docs/StageSetupMid.png" width="300px"><br>
+</div>
+
+### Spawning a Saveable Scene
+
+If you do not spawn a saved scene through the `SaveManager`, it will not save be saved by default.
+
+<div style="margin-left: 1em;">
+
+```csharp
+// Saved scene will be added to the current active stage, determined by the StageManager
+SaveManager.SpawnSavedScene(packedScene);
+
+// Configuring a saved scene child component before adding it to the tree.
+Node scene = SaveManager.SpawnSavedScene(packedScene, addToTree : false)
+Component component = scene.GetComponent<Component>();
+component.Configure(/* Do configuration of your custom script component here */);
+parentStage.AddChild(scene);
+
+// Other use examples:
+SaveManager.SpawnSavedScene(packedScene, addToTree : true, stage : customStage, tag : customTag)
+SaveManager.SpawnSavedScene(filePath);
+```
+</div>
+
 ### Implementation of a Node that will save and load its parent's position
 
 <div style="margin-left: 1em;">
@@ -95,42 +131,6 @@ public partial class SavePosition2D : Node, ISaveable
         return false;
     }
 }
-```
-</div>
-
-### Setup of a Stage with Saveable Nodes
-
-In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. If the `Saver` is a parent of the saveables, it will load them after they call `_Ready`.
-
-<div style="margin-left: 1em;">
-<img src="Docs/StageSetupParent.png" width="300px"><br>
-</div>
-
-In the below setup, `TimeSystem` is loaded after `_Ready` is called. `WeatherSystem` is loaded before `_Ready` is called.
-
-<div style="margin-left: 1em;">
-    <img src="Docs/StageSetupMid.png" width="300px"><br>
-</div>
-
-### Spawning a Saveable Scene
-
-If you do not spawn a saved scene through the `SaveManager`, it will not save be saved by default.
-
-<div style="margin-left: 1em;">
-
-```csharp
-// Saved scene will be added to the current active stage, determined by the StageManager
-SaveManager.SpawnSavedScene(packedScene);
-
-// Configuring a saved scene child component before adding it to the tree.
-Node scene = SaveManager.SpawnSavedScene(packedScene, addToTree : false)
-Component component = scene.GetComponent<Component>();
-component.Configure(/* Do configuration of your custom script component here */);
-parentStage.AddChild(scene);
-
-// Other use examples:
-SaveManager.SpawnSavedScene(packedScene, addToTree : true, stage : customStage, tag : customTag)
-SaveManager.SpawnSavedScene(filePath);
 ```
 </div>
 
