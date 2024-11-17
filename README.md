@@ -145,7 +145,7 @@ public partial class Inventory : Node, ISaveable
             inventorySaveData.SavedItems[i] = new SlotSaveData() {
                 Index = item.Key,
                 ItemUid = item.Value.Data.GetUidToText(),
-				Amount = item.Value.Amount,
+                Amount = item.Value.Amount,
             };
             i++;
         }
