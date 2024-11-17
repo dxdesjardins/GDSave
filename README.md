@@ -68,7 +68,7 @@ In the below setup, `TimeSystem` is loaded after `_Ready` is called. `WeatherSys
 
 ### Spawning a Saveable Scene
 
-If you do not spawn a saved scene through the `SaveManager`, it will not save be saved by default.
+If you do not spawn a saved scene through the `SaveManager`, it will not save by default.
 
 <div style="margin-left: 1em;">
 
