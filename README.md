@@ -161,14 +161,12 @@ public partial class Inventory : Node, ISaveable
             InventorySize = inventorySize,
             SavedItems = new SlotSaveData[items.Count]
         };
-        int i = 0;
         foreach (KeyValuePair<int, InventoryItem> item in items) {
             inventorySaveData.SavedItems[i] = new SlotSaveData() {
                 Index = item.Key,
                 ItemUid = item.Value.Data.GetUidToText(),
                 Amount = item.Value.Amount,
             };
-            i++;
         }
         return GDS.Serialize(inventorySaveData);
     }
