@@ -78,7 +78,7 @@ SaveManager.SpawnSavedScene(packedScene);
 
 // Configuring a saved scene child component before adding it to the tree.
 Node scene = SaveManager.SpawnSavedScene(packedScene, addToTree : false)
-Component component = scene.GetComponent<Component>().Configure(/* Do configuration here */);
+Component component = scene.GetComponent<Component>().Configure(/* Do configuration here*/);
 parentStage.AddChild(scene);
 
 // Other use examples:
