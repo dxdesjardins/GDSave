@@ -1,6 +1,6 @@
 # GDSave
 
-Feature rich Save System for the Godot Game Engine.
+Save System for the Godot Game Engine.
 
 <div style="margin-left: 1em;">
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
@@ -78,8 +78,7 @@ SaveManager.SpawnSavedScene(packedScene);
 
 // Configuring a saved scene child component before adding it to the tree.
 Node scene = SaveManager.SpawnSavedScene(packedScene, addToTree : false)
-Component component = scene.GetComponent<Component>();
-component.Configure(/* Do configuration of your custom script component here */);
+scene.GetComponent<Component>().Configure(/* Do configuration here */);
 parentStage.AddChild(scene);
 
 // Other use examples:
@@ -161,14 +160,12 @@ public partial class Inventory : Node, ISaveable
             InventorySize = inventorySize,
             SavedItems = new SlotSaveData[items.Count]
         };
-        int i = 0;
         foreach (KeyValuePair<int, InventoryItem> item in items) {
             inventorySaveData.SavedItems[i] = new SlotSaveData() {
                 Index = item.Key,
                 ItemUid = item.Value.Data.GetUidToText(),
                 Amount = item.Value.Amount,
             };
-            i++;
         }
         return GDS.Serialize(inventorySaveData);
     }
