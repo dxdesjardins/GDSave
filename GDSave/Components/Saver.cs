@@ -150,8 +150,7 @@ public partial class Saver : Node2D
             .Where(saveable => !excludedSaveables.Contains(saveable as Node))
             .ToList();
         // Create dictionary of SaveableId mapped to ISaveable Node. Assign SaveableId if needed.
-        var saveablesToBeCached = obtainSaveables
-            .ToDictionary(
+        var saveablesToBeCached = obtainSaveables.ToDictionary(
                 saveable => string.IsNullOrEmpty(saveable.SaveableId) ? CreateSaveableId(saveable) : saveable.SaveableId,
                 saveable => saveable
             );
@@ -194,6 +193,7 @@ public partial class Saver : Node2D
             saveableId = string.Format("{0}-{1}", typeName, System.Guid.NewGuid().ToString().Substring(0, guidLength));
         }
         while (!IsSaveableIdUnique(saveableId));
+        saveable.SaveableId = saveableId;
         return saveableId;
     }
 

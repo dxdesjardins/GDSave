@@ -97,7 +97,7 @@ public partial class SaveManager : NodeSingleton<SaveManager>
             return;
         if (_input is InputEventKey keyInput) {
             if (keyInput.IsJustPressed(settings.WipeActiveSceneData))
-                WipeStageData(StageManager.LastActiveStage);
+                WipeStageData(StageManager.LastActiveStageUid);
             if (keyInput.IsJustPressed(settings.SaveAndWriteToDiskKey)) {
                 var stopWatch = new System.Diagnostics.Stopwatch();
                 stopWatch.Start();
@@ -606,7 +606,7 @@ public partial class SaveManager : NodeSingleton<SaveManager>
             savers.Remove(saveable);
     }
 
-    public static void ClearActiveSaveData(bool removeListeners = true, bool reloadActiveStages = false) {
+    public static async void ClearActiveSaveData(bool removeListeners = true, bool reloadActiveStages = false) {
         if (activeSlot != -1) {
             int slot = activeSlot;
             DeleteSave(activeSlot);
@@ -618,9 +618,9 @@ public partial class SaveManager : NodeSingleton<SaveManager>
                 List<string> loadedStageNames = new();
                 for (int i = 0; i < loadedStages.Count; i++)
                     loadedStageNames.Add(loadedStages[i].Name);
-                _ = StageManager.UnloadAllStages();
+                await StageManager.UnloadAllStages();
                 for (int i = 0; i < loadedStageNames.Count; i++)
-                    _ = StageManager.LoadStage(loadedStageNames[i]);
+                    StageManager.LoadStage(loadedStageNames[i]);
             }
         }
     }

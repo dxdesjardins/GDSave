@@ -24,7 +24,7 @@ public abstract partial class SaveableResource : Resource, ISerializationListene
 
     private void SetIdentification() {
         if (string.IsNullOrEmpty(SaveableId)) {
-            string uid = this.GetUidToText();
+            string uid = this.GetUidString();
             string typeName = this.GetType().Name;
             SaveableId = string.Format("{0}-{1}", typeName, uid);
         }
