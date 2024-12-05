@@ -83,7 +83,7 @@ parentStage.AddChild(scene);
 
 // Other use examples:
 SaveManager.SpawnSavedScene(packedScene, addToTree : true, stage : customStage, tag : customTag)
-SaveManager.SpawnSavedScene(filePath);
+SaveManager.SpawnSavedScene(UidString);
 ```
 </div>
 
