@@ -18,8 +18,8 @@ Save System that supports automatic or manual saving and loading of instanced an
 4. Custom Game Startup Slot Loading Behaviour
 5. Backup of Save Files and Corruption Handling Options
 6. Supports Save File Types: Json & Binary
-7. Toggleable File Encryption
-8. Toggleable Json Serializer Options
+7. Toggle-able File Encryption
+8. Toggle-able Json Serializer Options
 9. Automatic Saving Options (SaveOnExit, SaveOnSlotSwitch, SaveOnInterval)
 10. Configurable Spawn Throttling
 11. Configurable Save and Load Hotkeys
