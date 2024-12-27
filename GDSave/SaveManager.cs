@@ -514,10 +514,10 @@ public partial class SaveManager : NodeSingleton<SaveManager>
         activeSaveGame.WipeStageData(stageName);
     }
 
-    public static void WipeSaveable(Saver saveable, bool stopSaving = true) {
+    public static void WipeSaveable(Saver saver, bool stopSaving = true) {
         if (activeSaveGame == null)
             return;
-        saveable.WipeData(activeSaveGame, stopSaving);
+        saver.WipeData(activeSaveGame, stopSaving);
     }
 
     /// <summary> Clears all saveable components that are listening to the Save Master </summary>
@@ -546,48 +546,48 @@ public partial class SaveManager : NodeSingleton<SaveManager>
             savers.Remove(saveable);
     }
 
-    /// <summary> Manual function for saving a saveable. Use if you have a saveable set to manual saving. </summary>
-    public static void SaveListener(Saver saveable) {
-        if (saveable != null && activeSaveGame != null)
-            saveable.OnSaveRequest(activeSaveGame);
+    /// <summary> Manual function for saving a saver. Use if you have a saver set to manual saving. </summary>
+    public static void SaveListener(Saver saver) {
+        if (saver != null && activeSaveGame != null)
+            saver.OnSaveRequest(activeSaveGame);
     }
 
-    /// <summary> Manual function for loading a saveable. Use if you have a saveable set to manual loading </summary>
-    public static void LoadListener(Saver saveable) {
-        if (saveable != null && activeSaveGame != null)
-            saveable.OnLoadRequest(activeSaveGame);
+    /// <summary> Manual function for loading a saver. Use if you have a saver set to manual loading </summary>
+    public static void LoadListener(Saver saver) {
+        if (saver != null && activeSaveGame != null)
+            saver.OnLoadRequest(activeSaveGame);
     }
 
-    /// <summary> Use if ISaveable components have been added to a saveable at runtime. </summary>
-    public static void ReloadListener(Saver saveable) {
-        if (saveable != null && activeSaveGame != null) {
-            saveable.ResetState();
-            saveable.OnLoadRequest(activeSaveGame);
+    /// <summary> Use if ISaveable components have been added to a saver at runtime. </summary>
+    public static void ReloadListener(Saver saver) {
+        if (saver != null && activeSaveGame != null) {
+            saver.ResetState();
+            saver.OnLoadRequest(activeSaveGame);
         }
     }
 
-    /// <summary> Add saveable from the notification list. It will recieve load/save requests. </summary>
-    public static void AddListener(Saver saveable) {
-        if (saveable != null && activeSaveGame != null)
-            saveable.OnLoadRequest(activeSaveGame);
-        savers.Add(saveable);
+    /// <summary> Add saver from the notification list. It will recieve load/save requests. </summary>
+    public static void AddListener(Saver saver) {
+        if (saver != null && activeSaveGame != null)
+            saver.OnLoadRequest(activeSaveGame);
+        savers.Add(saver);
     }
 
-    /// <summary> Add saveable from the notification list. It will recieve load/save requests. </summary>
-    public static void AddListener(Saver saveable, bool loadData) {
+    /// <summary> Add saver from the notification list. It will recieve load/save requests. </summary>
+    public static void AddListener(Saver saver, bool loadData) {
         if (loadData)
-            AddListener(saveable);
+            AddListener(saver);
         else
-            savers.Add(saveable);
+            savers.Add(saver);
     }
 
-    /// <summary> Remove saveable from the notification list. It no longers recieves load/save requests. </summary>
-    public static void RemoveListener(Saver saveable) {
-        if (savers.Remove(saveable)) {
+    /// <summary> Remove saver from the notification list. It no longers recieves load/save requests. </summary>
+    public static void RemoveListener(Saver saver) {
+        if (savers.Remove(saver)) {
             if (StageManager.IsQuittingGame && !autoSaveOnExit)
                 return;
-            if (saveable != null && activeSaveGame != null)
-                saveable.OnSaveRequest(activeSaveGame);
+            if (saver != null && activeSaveGame != null)
+                saver.OnSaveRequest(activeSaveGame);
         }
         if (!StageManager.IsQuittingGame || !autoSaveOnExit)
             return;
@@ -598,12 +598,12 @@ public partial class SaveManager : NodeSingleton<SaveManager>
         }
     }
 
-    /// <summary> Remove saveable from the notification list. So it no longers recieves load/save requests. </summary>
-    public static void RemoveListener(Saver saveable, bool saveData) {
+    /// <summary> Remove saver from the notification list. So it no longers recieves load/save requests. </summary>
+    public static void RemoveListener(Saver saver, bool saveData) {
         if (saveData)
-            RemoveListener(saveable);
+            RemoveListener(saver);
         else
-            savers.Remove(saveable);
+            savers.Remove(saver);
     }
 
     public static async void ClearActiveSaveData(bool removeListeners = true, bool reloadActiveStages = false) {

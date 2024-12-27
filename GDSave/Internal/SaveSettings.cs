@@ -22,12 +22,12 @@ public partial class SaveSettings : ResourceReference<SaveSettings, SaveSettings
     [ExportGroup("Save File Settings")]
     [Export] public SaveDirectory SaveDirectory { get; private set; } = SaveDirectory.PersistentDataDirectory;
     [Export] public string CustomDirectory { get; private set; } = "res://";
-    [Export] public string FileExtensionName { get; private set; } = ".savegame";
+    [Export] public string FileExtensionName { get; private set; } = ".save";
     [Export] public string FileFolderName { get; private set; } = "SaveData";
     [Export] public string TemporaryFolderName { get; private set; } = "TempSaveData";
-    [Export] public string FileName { get; private set; } = "Slot";
-    [Export] public string MetaDataExtentionName { get; private set; } = ".metadata";
-    [Export] public string BackupExtensionName { get; private set; } = ".b";
+    [Export] public string FileName { get; private set; } = "slot";
+    [Export] public string MetaDataExtentionName { get; private set; } = ".info";
+    [Export] public string BackupExtensionName { get; private set; } = ".backup";
     ///<summary> If save and backup are not loadable, save will be archived and slot removed. </summary>
     [Export] public bool ArchiveSaveFilesOnFullCorruption { get; private set; } = false;
     ///<summary> If save and backup are not loadable, load a new empty save. Happens after archival. </summary>

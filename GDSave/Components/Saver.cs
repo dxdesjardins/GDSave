@@ -12,7 +12,7 @@ namespace Chomp.Save.Components;
 // saveableId = typeName-guid
 
 [Tool]
-public partial class Saver : Node2D
+public partial class Saver : Node
 {
     [ExportGroup("Configuration")]
     [Export] private bool loadOnce;
@@ -76,6 +76,11 @@ public partial class Saver : Node2D
         switch (what) {
             case (int)NotificationReady:
                 Initialize();
+                this.GetParent().TreeExited += () => {
+                    removeFrame = Engine.GetProcessFrames();
+                    if (!manualSaveLoad)
+                        SaveManager.RemoveListener(this);
+                };
                 // Store the component identifiers into a dictionary for performant retrieval.
                 for (int i = 0; i < CachedSaveableData.Count; i++) {
                     saveIdentifications.Add(string.Format("{0}-{1}", saverId.Value, CachedSaveableData[i].saveableId.Value));
@@ -85,11 +90,6 @@ public partial class Saver : Node2D
                     this.RemoveFirstParent();
                 if (!manualSaveLoad)
                     SaveManager.AddListener(this);
-                break;
-            case (int)NotificationExitTree:
-                removeFrame = Engine.GetProcessFrames();
-                if (!manualSaveLoad)
-                    SaveManager.RemoveListener(this);
                 break;
         }
     }
