@@ -44,7 +44,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 
 ### Setup of a Saveable Scene
 
-1. All saveable scenes require a `Saver` node as the scene root.
+1. All saveable scenes require a `Saver` node.
 2. All saveable nodes must be `[Tool]` scripts. Saveable nodes in this example are `SpriteFlipX`, `Health`, `SaveState`, and `SavePosition2D`.
 3. `SaveState` and `SavePosition2D` are included in this repository. `SaveState` will save if its parent is inside the SceneTree. `SavePosition2D` will save its parent's 2D position.
 
