@@ -27,9 +27,7 @@ public partial class SavedScene : Node
 
     public override void _ExitTree() {
         removeFrame = Engine.GetProcessFrames();
-        if (this.IsRemovedExplicitly()) {
-            if (!Saveable.SaveWhenRemoved)
-                return;
+        if (this.IsRemovedExplicitly() && Saveable.SaveWhenRemoved) {
             if (wipeDataWhenRemoved) {
                 SaveManager.WipeSaveable(Saveable);
                 savedSceneManager.WipeCachedSceneData(this, Saveable);

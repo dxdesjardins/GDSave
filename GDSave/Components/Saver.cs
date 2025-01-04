@@ -56,7 +56,9 @@ public partial class Saver : Node
         }
     }
 
-    ~Saver() => cachedSavers.Remove(saverId.Value);
+    ~Saver() {
+        cachedSavers.Remove(saverId.Value);
+    }
 
     public override void _Notification(int what) {
         if (Engine.IsEditorHint()) {

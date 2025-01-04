@@ -18,11 +18,8 @@ public static class GDS
         var options = new JsonSerializerOptions {
             WriteIndented = storageConfig.WriteIndented,
             IncludeFields = storageConfig.IncludeFields,
-            TypeInfoResolver = storageConfig.IncludeFields ?
-                new DefaultJsonTypeInfoResolver {
-                    Modifiers = { storageConfig.IncludePrivateFields ? AddAllPrivateFields : default }
-                } :
-                JsonSerializerOptions.Default.TypeInfoResolver,
+            TypeInfoResolver = storageConfig.IncludeFields && storageConfig.IncludePrivateFields ?
+                new DefaultJsonTypeInfoResolver { Modifiers = {  AddAllPrivateFields } } : JsonSerializerOptions.Default.TypeInfoResolver,
             Encoder = storageConfig.UnsafeRelaxedJsonEscaping ? JavaScriptEncoder.UnsafeRelaxedJsonEscaping : JavaScriptEncoder.Default,
         };
         if (!storageConfig.IncludeFields) {

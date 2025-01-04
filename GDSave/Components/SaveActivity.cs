@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using Chomp.Essentials;
+using Chomp.Save.Internal;
 
 namespace Chomp.Save.Components;
 
