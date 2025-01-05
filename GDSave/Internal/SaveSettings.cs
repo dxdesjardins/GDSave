@@ -71,10 +71,10 @@ public partial class SaveSettings : ResourceReference<SaveSettings, SaveSettings
 
     [ExportGroup("Hotkeys")]
     [Export] public bool UseHotkeys { get; private set; } = false;
-    [Export] public Key SaveAndWriteToDiskKey { get; private set; } = Key.F2;
-    [Export] public Key SyncSaveGameKey { get; private set; } = Key.F3;
-    [Export] public Key SyncLoadGameKey { get; private set; } = Key.F4;
-    [Export] public Key WipeActiveSceneData { get; private set; } = Key.F5;
+    [Export] public Key SaveAndWriteToDiskKey { get; private set; } = Key.F4;
+    [Export] public Key SyncSaveGameKey { get; private set; } = Key.F5;
+    [Export] public Key SyncLoadGameKey { get; private set; } = Key.F6;
+    [Export] public Key WipeActiveSceneData { get; private set; } = Key.F7;
 
     [ExportGroup("Debug")]
     [Export] public bool EnableLogging { get; private set; } = false;
