@@ -17,6 +17,7 @@ public partial class Saver : Node
     [ExportGroup("Configuration")]
     [Export] private bool loadOnce;
     [Export] public bool manualSaveLoad;
+    [Export] private bool loadAfterParentReady = true;
 
     [ExportGroup("Initialization")]
     [Export] public bool SaveWhenRemoved { get; private set; }
@@ -77,21 +78,10 @@ public partial class Saver : Node
         }
         switch (what) {
             case (int)NotificationReady:
-                Initialize();
-                this.GetParent().TreeExited += () => {
-                    removeFrame = Engine.GetProcessFrames();
-                    if (!manualSaveLoad)
-                        SaveManager.RemoveListener(this);
-                };
-                // Store the component identifiers into a dictionary for performant retrieval.
-                for (int i = 0; i < CachedSaveableData.Count; i++) {
-                    saveIdentifications.Add(string.Format("{0}-{1}", saverId.Value, CachedSaveableData[i].saveableId.Value));
-                    saveables.Add(this.GetNode(CachedSaveableData[i].nodePath) as ISaveable);
-                }
-                if (removeAfterInitialized)
-                    this.RemoveFirstParent();
-                if (!manualSaveLoad)
-                    SaveManager.AddListener(this);
+                if (loadAfterParentReady && !this.GetParent().IsNodeReady())
+                    this.GetParent().Ready += PerformRuntimeSetup;
+                else
+                    PerformRuntimeSetup();
                 break;
         }
     }
@@ -106,6 +96,24 @@ public partial class Saver : Node
             sceneFileName = stageFileName;
         else
             sceneFileName = System.IO.Path.GetFileNameWithoutExtension(this.GetScene().SceneFilePath);
+    }
+
+    private void PerformRuntimeSetup() {
+        Initialize();
+        this.GetParent().TreeExited += () => {
+            removeFrame = Engine.GetProcessFrames();
+            if (!manualSaveLoad)
+                SaveManager.RemoveListener(this);
+        };
+        // Store the component identifiers into a dictionary for performant retrieval.
+        for (int i = 0; i < CachedSaveableData.Count; i++) {
+            saveIdentifications.Add(string.Format("{0}-{1}", saverId.Value, CachedSaveableData[i].saveableId.Value));
+            saveables.Add(this.GetNode(CachedSaveableData[i].nodePath) as ISaveable);
+        }
+        if (removeAfterInitialized)
+            this.RemoveFirstParent();
+        if (!manualSaveLoad)
+            SaveManager.AddListener(this);
     }
 
     private void UpdateSaverId() {

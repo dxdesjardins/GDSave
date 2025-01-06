@@ -24,6 +24,8 @@ public partial class SavePosition2D : Node, ISaveable
             // We set the position twice if the object is a physics body to prevent it from being reverted during the physics process.
             if (parent is PhysicsBody2D physicsBody2D)
                 _ = GDE.CallDeferredPhysics(() => { physicsBody2D.Position = position; });
+            else if (parent is Camera2D camera2D)
+                _ = GDE.CallDeferred(camera2D.ResetSmoothing);
         }
         else if (parent is Control control)
             control.Position = position;

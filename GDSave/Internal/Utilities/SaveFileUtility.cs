@@ -228,7 +228,7 @@ public class SaveFileUtility
         File.Delete(metaDataFilePath);
         if (ObtainSlotSaveFileNames().ContainsKey(slot))
             ObtainSlotSaveFileNames().Remove(slot);
-        GDS.Log($"Removed file at {filePath}");
+        GDS.Log($"Deleted save data for slot: {slot}");
     }
 
     public static void DeleteAllSaveFiles() {

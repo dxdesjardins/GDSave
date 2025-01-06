@@ -8,6 +8,8 @@ namespace Chomp.Save.Components;
 [Tool]
 public partial class SaveState : Node, ISaveable
 {
+    /// <summary> Stops physics events from happening before loading. </summary>
+    [Export] private bool disableFirstFrame = true;
     private bool savedInTree = false;
     private bool isInTree = false;
     private bool saved;
@@ -18,6 +20,12 @@ public partial class SaveState : Node, ISaveable
     public override void _EnterTree() {
         if (!Engine.IsEditorHint())
             isInTree = true;
+        if (disableFirstFrame) {
+            Node parent = this.GetParent();
+            ProcessModeEnum processMode = parent.ProcessMode;
+            parent.ProcessMode = ProcessModeEnum.Disabled;
+            _ = GDE.CallDeferred(() => { this.GetParent().ProcessMode = processMode; });
+        }
     }
 
     public override void _ExitTree() {
@@ -25,12 +33,12 @@ public partial class SaveState : Node, ISaveable
             isInTree = false;
     }
 
-    public void OnLoad(string data) {
+    public async void OnLoad(string data) {
         saved = true;
         savedInTree = data == "1";
         isInTree = savedInTree;
         if (!savedInTree)
-            _ = this.SafeRemoveParent();
+            await this.SafeRemoveParent();
     }
 
     public string OnSave() {

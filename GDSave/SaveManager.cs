@@ -96,8 +96,9 @@ public partial class SaveManager : NodeSingleton<SaveManager>
         if (!settings.UseHotkeys)
             return;
         if (_input is InputEventKey keyInput) {
-            if (keyInput.IsJustPressed(settings.WipeActiveSceneData))
-                WipeStageData(StageManager.LastActiveStageUid);
+            if (keyInput.IsJustPressed(settings.DeleteActiveSave)) {
+                ClearActiveSaveData();
+            }
             if (keyInput.IsJustPressed(settings.SaveAndWriteToDiskKey)) {
                 var stopWatch = new System.Diagnostics.Stopwatch();
                 stopWatch.Start();
@@ -287,7 +288,7 @@ public partial class SaveManager : NodeSingleton<SaveManager>
         if (clearAllListeners)
             RemoveAllListeners(syncSave);
         activeSlot = -1;
-        activeSaveGame.Dispose();
+        activeSaveGame?.Dispose();
         activeSaveGame = null;
     }
 
@@ -334,7 +335,7 @@ public partial class SaveManager : NodeSingleton<SaveManager>
             if (SaveSettings.Instance.AutoSaveOnSlotSwitch && !disableAutoSave && activeSaveGame != null)
                 WriteActiveSaveToDisk();
             if (SaveSettings.Instance.ClearSavedScenesOnSlotSwitch)
-                RemoveAndWipeActiveSavedScenes();
+                RemoveAndWipeActiveSavedStages();
         }
         if ((slot < 0 && slot != -2) || slot > SaveSettings.Instance.MaxSaveSlotCount) {
             GDS.LogErr($"Attempted to set invalid slot: {slot}");
@@ -869,11 +870,11 @@ public partial class SaveManager : NodeSingleton<SaveManager>
         else return true;
     }
 
-    private static void RemoveAndWipeActiveSavedScenes() {
-        List<Node> totalLoadedScenes = StageManager.TotalStages;
-        foreach (Node scene in totalLoadedScenes) {
+    private static void RemoveAndWipeActiveSavedStages() {
+        List<Node> totalLoadedStages = StageManager.TotalStages;
+        foreach (Node stage in totalLoadedStages) {
             SavedSceneManager saveIM;
-            if (savedSceneManagers.TryGetValue(scene.GetHashCode(), out saveIM))
+            if (savedSceneManagers.TryGetValue(stage.GetHashCode(), out saveIM))
                 saveIM.RemoveAndWipeAllSavedScenes();
         }
     }
