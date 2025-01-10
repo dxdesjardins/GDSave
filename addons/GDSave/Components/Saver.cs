@@ -27,7 +27,7 @@ public partial class Saver : Node
     [Export] private StringVariable saverId = new() { ResourceLocalToScene = true };
 
     [ExportGroup("Components")]
-    [Export] private Godot.Collections.Array<Node> externalListeners = new();
+    [Export] private Godot.Collections.Array<Node> externalSaveables = new();
     [Export] private Godot.Collections.Array<Node> excludedSaveables = new();
     [Export] public Godot.Collections.Array<CachedSaveableData> CachedSaveableData { get; private set; } = new();
 
@@ -63,14 +63,14 @@ public partial class Saver : Node
 
     public override void _Notification(int what) {
         if (Engine.IsEditorHint()) {
-            if (this.IsInternal())
+            if (this.IsInternal()) {
+                GDS.Log("Warning: Saver failed to cache data due to being an internal node.");
                 return;
+            }
             switch (what) {
-                case (int)NotificationReady:
-                    Initialize();
-                    break;
                 case (int)NotificationEditorPreSave:
-					UpdateSaverId();
+                    Initialize();
+                    UpdateSaverId();
 					UpdateCachedSaveableData();
                     break;
             }
@@ -152,7 +152,7 @@ public partial class Saver : Node
     private void UpdateCachedSaveableData() {
         // Get all saveable components that should be cached
         var obtainSaveables = this.GetComponentsInChildren<ISaveable>(this.IsParent()).ToList();
-        obtainSaveables.AddRange(externalListeners
+        obtainSaveables.AddRange(externalSaveables
             .Where(listener => listener != null)
             .SelectMany(listener => listener.GetComponentsInChildren<ISaveable>()));
         // Remove excluded saveables
@@ -176,6 +176,11 @@ public partial class Saver : Node
                 CachedSaveableData.RemoveAt(i);
             }
         }
+        // TODO: This is needed due to an engine bug where added saveables may not have the cache saved unless the entire array points to a new location.
+        // From my experience, this caused in instances where the Saver node is part of an inherited scene. I could not find any issue reports on this,
+        // but I don't plan to submit one because I know there are large overhauls planned for marking inheriting scene components as serializable.
+        if (saveablesToBeCached.Count > 0)
+            CachedSaveableData = CachedSaveableData.Duplicate();
         // Create and add missing cachedSaveables
         foreach (var saveableInstance in saveablesToBeCached) {
             var newSaveableData = new CachedSaveableData {
@@ -183,6 +188,7 @@ public partial class Saver : Node
                 saveableId = { Value = saveableInstance.Key }
             };
             CachedSaveableData.Add(newSaveableData);
+            //newSaveableData.ResourceLocalToScene = true;
             GDS.Log($"Added cached saveable data: {newSaveableData.saveableId.Value}");
         }
     }
