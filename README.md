@@ -38,7 +38,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
 3. Download this GDSave repository and add it to your project's "addons" folder.
 4. Set the `SaveManager` as an AutoLoad.
-5. Create a `SaveSettings` Resource, open the Resource in the editor, close and restart the game engine, then re-open the resource in the editor. This will configure the resource as a referenceable singleton.
+5. Create a `SaveSettings` Resource, open the Resource in the editor, close and restart the game engine, then re-open the Resource in the editor. This will configure the Resource as a referenceable Singleton.
 
 ## Usage
 
