@@ -54,13 +54,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 
 ### Setup of a Stage with Saveable Nodes
 
-In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. If the `Saver` is a parent of the saveables, it will load them after they call `_Ready`.
-
-<div style="margin-left: 1em;">
-<img src="Docs/StageSetupParent.png" width="300px"><br>
-</div>
-
-In the below setup, `TimeSystem` is loaded after `_Ready` is called. `WeatherSystem` is loaded before `_Ready` is called.
+In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. By default, the `Saver` will load all saveables after its parent calls `_Ready`. This may be changed in the `Saver` nodes settings.
 
 <div style="margin-left: 1em;">
     <img src="Docs/StageSetupMid.png" width="300px"><br>
