@@ -24,7 +24,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 10. Configurable Spawn Throttling
 11. Configurable Save and Load Hotkeys
 12. Time Played Tracking
-13. And much more
+13. And some other stuff
 
 ## Requirements
 
