@@ -28,17 +28,16 @@ Save System that supports automatic or manual saving and loading of instanced an
 
 ## Requirements
 
-1. Godot .NET v4.3+
+1. Godot .NET v4.4+
 2. .NET 8+
 3. Install my GDEssentials repository and follow the setup instructions to use my StageManager.
 
 ## Setup
 
-1. Install .NET 8+ and Godot .NET v4.3+. Create a C# Solution File and ensure that the solution is configured to use .NET 8. You must manually edit the `PROJECTNAME.csproj` file TargetFramework to "net8.0".
+1. Install .NET 8+ and Godot .NET v4.4+. Create a C# Solution File and ensure that the solution is configured to use .NET 8. You must manually edit the `PROJECTNAME.csproj` file TargetFramework to "net8.0".
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
 3. Download this GDSave repository and add it to your project's "addons" folder.
 4. Set the `SaveManager` as an AutoLoad.
-5. Create a `SaveSettings` Resource, open the Resource in the editor, close and restart the game engine, then re-open the Resource in the editor. This will configure the Resource as a referenceable Singleton.
 
 ## Usage
 
