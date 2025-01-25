@@ -34,7 +34,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 
 ## Setup
 
-1. Install .NET 8+ and Godot .NET v4.4+. Create a C# Solution File and ensure that the solution is configured to use .NET 8. You must manually edit the `PROJECTNAME.csproj` file TargetFramework to "net8.0".
+1. Install .NET 8+ and Godot .NET v4.4+.
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
 3. Download this GDSave repository and add it to your project's "addons" folder.
 4. Set the `SaveManager` as an AutoLoad.
@@ -54,7 +54,7 @@ Save System that supports automatic or manual saving and loading of instanced an
 
 ### Setup of a Stage with Saveable Nodes
 
-In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. By default, the `Saver` will load all saveables after its parent calls `_Ready`. This may be changed in the `Saver` nodes settings.
+In the below setup, `TimeSystem` and `WeatherSystem` are saveable nodes. A `Saver` node is required to be either a parent or sibling of the saveable nodes for saving and loading to take place. By default, the `Saver` will load all saveables after its parent calls `_Ready`. This may be changed in the `Saver` node settings. All stages must have a root node of type `IStage`, which would be `Stage2D` in this example.
 
 <div style="margin-left: 1em;">
     <img src="Docs/StageSetupMid.png" width="300px"><br>
