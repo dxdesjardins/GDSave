@@ -18,8 +18,9 @@ public partial class SaveState : Node, ISaveable
     [Export] public string SaveableId { get; set; }
 
     public override void _EnterTree() {
-        if (!Engine.IsEditorHint())
-            isInTree = true;
+        if (Engine.IsEditorHint())
+            return;
+        isInTree = true;
         if (disableFirstFrame) {
             Node parent = this.GetParent();
             ProcessModeEnum processMode = parent.ProcessMode;
@@ -33,12 +34,12 @@ public partial class SaveState : Node, ISaveable
             isInTree = false;
     }
 
-    public async void OnLoad(string data) {
+    public void OnLoad(string data) {
         saved = true;
         savedInTree = data == "1";
         isInTree = savedInTree;
         if (!savedInTree)
-            await this.SafeRemoveParent();
+            _ = this.SafeRemoveParent();
     }
 
     public string OnSave() {
