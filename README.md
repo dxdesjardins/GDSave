@@ -11,7 +11,7 @@ Save System for the Godot Game Engine.
 The project used in the below tutorial is included in the `ExampleProjects` folder. If you are having trouble getting it working correctly, please note:
 
 1) You may see an error when opening the project the first time because it is not compiled. Click compile and proceed.
-2) You must disable embedded mode for saving on exit to work in 4.4 Beta 1. This is fixed for the Beta 2 release.
+2) You must disable embedded window mode for saving on exit to work in 4.4 Beta 1. This is fixed for the Beta 2 release.
 3) If you save the game within 1 second after taking a coin, it will appear not to save. This is working as intended as Brackeys only disables the coins visibility the first second after collection, but does not remove it from the scene.
 
 <div align="center">
