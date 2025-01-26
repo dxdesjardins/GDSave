@@ -4,7 +4,7 @@
 ##### Every project should ignore #####
 
 # Godot-specific ignores
-.godot/
+/.godot/
 android/
 
 # Visual studio
