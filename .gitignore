@@ -1,11 +1,10 @@
-/GDEssentials/
-!/ExampleProjects/
+GDEssentials/
 
 ##### Every project should ignore #####
 
 # Godot-specific ignores
 .godot/
-/android/
+android/
 
 # Visual studio
 .vs/
@@ -46,3 +45,6 @@ tests/metadata.json
 # Solution File
 *.csproj
 *.sln
+
+##### Things not to ignore
+!*/ExampleProjects/**
