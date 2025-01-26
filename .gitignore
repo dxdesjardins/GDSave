@@ -1,3 +1,4 @@
+##### Custom things to ignore
 GDEssentials/
 
 ##### Every project should ignore #####
@@ -46,5 +47,5 @@ tests/metadata.json
 *.csproj
 *.sln
 
-##### Things not to ignore
+##### Custom things not to ignore
 !*/ExampleProjects/**
