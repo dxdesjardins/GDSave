@@ -6,6 +6,8 @@ Save System for the Godot Game Engine.
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
 </div>
 
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=rcLW2qsLOCQ&feature=youtu.be" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Overview
 
 Save System that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
