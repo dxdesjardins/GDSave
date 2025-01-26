@@ -1,4 +1,5 @@
-GDEssentials/
+/GDEssentials/
+!/ExampleProjects/
 
 ##### Every project should ignore #####
 
