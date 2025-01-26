@@ -16,7 +16,7 @@ android/
 .import/
 export.cfg
 export_presets.cfg
-project.godot
+/project.godot
 
 # Mono-specific ignores
 .mono/
