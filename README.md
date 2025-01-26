@@ -6,11 +6,11 @@ Save System for the Godot Game Engine.
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
 </div>
 
+[![GDSave Tutorial](https://img.youtube.com/vi/rcLW2qsLOCQ/0.jpg)](https://www.youtube.com/watch?v=rcLW2qsLOCQ)
+
 ## Overview
 
 Save System that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
-
-[![GDSave Tutorial](https://img.youtube.com/vi/rcLW2qsLOCQ/0.jpg)](https://www.youtube.com/watch?v=rcLW2qsLOCQ)
 
 ## Features
 
