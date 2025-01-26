@@ -1,5 +1,5 @@
 ##### Custom things to ignore
-GDEssentials/
+/GDEssentials/
 
 ##### Every project should ignore #####
 
@@ -44,8 +44,5 @@ tests/metadata.json
 .DS_Store
 
 # Solution File
-*.csproj
-*.sln
-
-##### Custom things not to ignore
-!*/ExampleProjects/**
+/*.csproj
+/*.sln
