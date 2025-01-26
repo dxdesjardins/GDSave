@@ -8,7 +8,7 @@ Save System for the Godot Game Engine.
 
 ## Tutorial
 
-The project used in the below tutorial is included in the `ExampleProjects` folder. If you are having trouble getting it working correctly, please note:
+The project used in the below youtube tutorial is included in the `ExampleProjects` folder. If you are having trouble getting it working correctly, please note:
 
 1) You may see an error when opening the project the first time because it is not compiled. Click compile and proceed.
 2) You must disable embedded window mode for saving on exit to work in 4.4 Beta 1. This is fixed for the Beta 2 release.
