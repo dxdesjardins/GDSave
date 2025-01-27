@@ -6,7 +6,7 @@ Save System for the Godot Game Engine.
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
 </div>
 
-## Tutorial
+## Video Tutorial
 
 The project used in the below youtube tutorial is included in the `ExampleProjects` folder. If you are having trouble getting it working correctly, please note:
 
