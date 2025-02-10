@@ -9,7 +9,7 @@ namespace Chomp.Save.Components;
 public partial class SaveState : Node, ISaveable
 {
     /// <summary> Stops physics events from happening before loading. </summary>
-    [Export] private bool disableFirstFrame = true;
+    [Export] private bool disableFirstFrame = false;
     private bool savedInTree = false;
     private bool isInTree = false;
     private bool saved;
