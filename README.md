@@ -1,6 +1,6 @@
 # GDSave
 
-Component Save System for the Godot Game Engine.
+Save System for the Godot Game Engine.
 
 <div style="margin-left: 1em;">
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
