@@ -1,6 +1,6 @@
 # GDSave
 
-Save System for the Godot Game Engine.
+Save System for the Godot Game Engine. Implement saving functionality to an entity using re-usable components.
 
 <div style="margin-left: 1em;">
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
@@ -39,10 +39,8 @@ Save System that supports automatic or manual saving and loading of instanced an
 1. Godot .NET v4.4+
 2. .NET 8+
 3. Download my GDEssentials repository and follow the setup instructions to use my StageManager. Git installation:
-<div style="margin-left: 40px">
-<pre><code>
-git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons/GDEssentials
-</code></pre>
+<div style="margin-left: 60px">
+<pre><code>git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons/GDEssentials</code></pre>
 </div>
 
 ## Setup
@@ -50,10 +48,8 @@ git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons
 1. Install .NET 8+ and Godot .NET v4.4+.
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
 3. Download this GDSave repository and add it to your project's "addons" folder. Git installation:
-<div style="margin-left: 40px">
-<pre><code>
-git submodule add -b release https://github.com/dxdesjardins/GDSave.git addons/GDSave
-</code></pre>
+<div style="margin-left: 60px">
+<pre><code>git submodule add -b release https://github.com/dxdesjardins/GDSave.git addons/GDSave</code></pre>
 </div>
 4. Set the `SaveManager` as an AutoLoad.
 
