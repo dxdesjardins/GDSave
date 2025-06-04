@@ -1,6 +1,6 @@
 # GDSave
 
-Save System for the Godot Game Engine. Implement saving functionality to an entity using re-usable components.
+Save System for the Godot Game Engine.
 
 <div style="margin-left: 1em;">
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
@@ -16,7 +16,7 @@ Save System for the Godot Game Engine. Implement saving functionality to an enti
 
 ## Overview
 
-Save System that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
+Entity Component based Save System that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
 
 ## Features
 
