@@ -52,6 +52,7 @@ git submodule add -b master https://github.com/dxdesjardins/GDEssentials addons/
 git submodule add -b main https://github.com/dxdesjardins/GDSave.git addons/GDSave
 ```
 4. Set the `SaveManager` as an AutoLoad.
+5. Create a `SaveSettings` resource. Open the resource and click the button: `UpdateResourceUid`. This resource controls the settings of the system.
 
 ## Usage
 
