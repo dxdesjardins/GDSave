@@ -40,7 +40,7 @@ Entity Component based Save System that supports automatic or manual saving and 
 2. .NET 8+
 3. Download my GDEssentials repository and follow the setup instructions to use my StageManager. Using Git submodule:
 ```
-git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons/GDEssentials
+git submodule add -b master https://github.com/dxdesjardins/GDEssentials addons/GDEssentials
 ```
 
 ## Setup
@@ -49,7 +49,7 @@ git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
 3. Download this GDSave repository and add it to your project's "addons" folder. Using Git submodule:
 ```
-git submodule add -b release https://github.com/dxdesjardins/GDSave.git addons/GDSave
+git submodule add -b main https://github.com/dxdesjardins/GDSave.git addons/GDSave
 ```
 4. Set the `SaveManager` as an AutoLoad.
 
