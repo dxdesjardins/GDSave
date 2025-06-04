@@ -40,9 +40,9 @@ Save System that supports automatic or manual saving and loading of instanced an
 2. .NET 8+
 3. Download my GDEssentials repository and follow the setup instructions to use my StageManager. Git installation:
 <div style="margin-left: 40px">
-```
+<pre><code>
 git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons/GDEssentials
-```
+</code></pre>
 </div>
 
 ## Setup
@@ -51,11 +51,11 @@ git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
 3. Download this GDSave repository and add it to your project's "addons" folder. Git installation:
 <div style="margin-left: 40px">
-```
+<pre><code>
 git submodule add -b release https://github.com/dxdesjardins/GDSave.git addons/GDSave
-```
+</code></pre>
 </div>
-5. Set the `SaveManager` as an AutoLoad.
+4. Set the `SaveManager` as an AutoLoad.
 
 ## Usage
 
