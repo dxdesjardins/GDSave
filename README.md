@@ -38,13 +38,15 @@ Save System that supports automatic or manual saving and loading of instanced an
 
 1. Godot .NET v4.4+
 2. .NET 8+
-3. Install my GDEssentials repository and follow the setup instructions to use my StageManager.
+3. Download my GDEssentials repository and follow the setup instructions to use my StageManager. Git installation:
+'''git submodule add -b release https://github.com/dxdesjardins/GDEssentials addons/GDEssentials'''
 
 ## Setup
 
 1. Install .NET 8+ and Godot .NET v4.4+.
 2. Download my GDEssentials repository and add it to your project. Follow the setup instructions in the repository to setup my `StageManager`.
-3. Download this GDSave repository and add it to your project's "addons" folder.
+3. Download this GDSave repository and add it to your project's "addons" folder. Git installation:
+'''git submodule add -b release https://github.com/dxdesjardins/GDSave.git addons/GDSave'''
 4. Set the `SaveManager` as an AutoLoad.
 
 ## Usage
