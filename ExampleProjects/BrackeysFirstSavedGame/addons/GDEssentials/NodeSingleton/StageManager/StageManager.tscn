@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://p0wrjkl5b5bf"]
-
-[ext_resource type="Script" uid="uid://b076l85ovwypx" path="res://addons/GDEssentials/NodeSingleton/StageManager/StageManager.cs" id="1_pvdd0"]
-
-[node name="StageManager" type="Node2D"]
-script = ExtResource("1_pvdd0")
-stageDirectory = "res://scenes/Stage/"
