@@ -9,7 +9,7 @@ Save System for the Godot Game Engine.
 ## Video Tutorial
 
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=rcLW2qsLOCQ">
+  <a href="https://youtu.be/9wUgc41ALO4">
     <img src="Docs/TutorialThumb.png" alt="GDSave Tutorial" width="400">
   </a>
 </div>
