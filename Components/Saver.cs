@@ -46,7 +46,7 @@ public partial class Saver : Node
     public bool HasSaverId => !string.IsNullOrEmpty(saverId.Value);
     internal bool HasLoadedAnyComponents { get; private set; }
     internal bool HasSavedAnyComponents { get; private set; }
-    
+
     public string SaverId {
         get { return saverId.Value; }
         set {
@@ -55,10 +55,6 @@ public partial class Saver : Node
             if (wasEmpty && HasSaverId)
                 SaveManager.ReloadListener(this);
         }
-    }
-
-    ~Saver() {
-        cachedSavers.Remove(saverId.Value);
     }
 
     public override void _Notification(int what) {
@@ -71,7 +67,10 @@ public partial class Saver : Node
                 case (int)NotificationEditorPreSave:
                     Initialize();
                     UpdateSaverId();
-					UpdateCachedSaveableData();
+                    UpdateCachedSaveableData();
+                    break;
+                case (int)NotificationExitTree:
+                    cachedSavers.Remove(saverId.Value);
                     break;
             }
             return;
@@ -89,10 +88,10 @@ public partial class Saver : Node
     private void Initialize() {
         string stagePath = Stage?.SceneFilePath;
         if (!string.IsNullOrEmpty(stagePath))
-		    stageFileName = System.IO.Path.GetFileNameWithoutExtension(stagePath);
+            stageFileName = System.IO.Path.GetFileNameWithoutExtension(stagePath);
         if (!string.IsNullOrEmpty(this.SceneFilePath))
             sceneFileName = System.IO.Path.GetFileNameWithoutExtension(this.SceneFilePath);
-		else if (!string.IsNullOrEmpty(sceneFileName))
+        else if (!string.IsNullOrEmpty(sceneFileName))
             sceneFileName = stageFileName;
         else
             sceneFileName = System.IO.Path.GetFileNameWithoutExtension(this.GetScene().SceneFilePath);
@@ -123,7 +122,7 @@ public partial class Saver : Node
             if (SaveSettings.Instance.ResetSaverIdOnNewStage && !saverId.Value.StartsWith(stageFileName))
                 saverId.Value = "";
             // If ident is a duplicate, erase it
-            if (SaveSettings.Instance.ResetSaverIdOnDuplicate) {
+            if (SaveSettings.Instance.ResetSaverIdOnDuplicate && !string.IsNullOrEmpty(saverId.Value)) {
                 if (!string.IsNullOrEmpty(saverId.Value)) {
                     bool isDuplicate = cachedSavers.TryGetValue(saverId.Value, out Saver saveable);
                     if (!isDuplicate && saverId.Value != "")
@@ -133,8 +132,10 @@ public partial class Saver : Node
                             cachedSavers.Remove(saverId.Value);
                             cachedSavers.Add(saverId.Value, this);
                         }
-                        else if (saveable != this)
+                        else if (saveable != this) {
+                            GDE.Log("Duplicate Saver ID reset");
                             saverId.Value = "";
+                        }
                     }
                 }
             }
@@ -199,9 +200,9 @@ public partial class Saver : Node
                 return true;
         }
         return false;
-	}
+    }
 
-	public string CreateSaveableId(ISaveable saveable) {
+    public string CreateSaveableId(ISaveable saveable) {
         string typeName = (saveable as Node).GetType().Name;
         string saveableId;
         do {
