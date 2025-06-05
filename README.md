@@ -6,12 +6,14 @@ Save System for the Godot Game Engine.
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
 </div>
 
-## Video Tutorial
+## Video Tutorial and Example Project
 
 <div align="center">
   <a href="https://youtu.be/9wUgc41ALO4">
     <img src="Docs/TutorialThumb.png" alt="GDSave Tutorial" width="400">
-  </a>
+  </a><br>
+  Example Project Link:
+  <a href="https://github.com/dxdesjardins/BrackeysFirstSavedGame">Brackey's First Saved Game</a>
 </div>
 
 ## Overview
