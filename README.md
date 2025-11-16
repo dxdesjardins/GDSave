@@ -1,6 +1,6 @@
 # GDSave
 
-Save System for the Godot Game Engine.
+Feature-rich Save System for the Godot Game Engine supporting code-less saving via reusable components. 
 
 <div style="margin-left: 1em;">
 <img src="Docs/IntroPic.png" width="1200px" style="vertical-align:middle;">
