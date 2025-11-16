@@ -16,10 +16,6 @@ Feature-rich Save System for the Godot Game Engine supporting code-less saving v
   <a href="https://github.com/dxdesjardins/BrackeysFirstSavedGame">Brackey's First Saved Game</a>
 </div>
 
-## Overview
-
-Entity Component based Save System that supports automatic or manual saving and loading of instanced and static scenes and resources. Allows for basic saving without the need for programming. Designed to provide all features needed for a wide variety of games.
-
 ## Features
 
 1. Configurable Save Directory
